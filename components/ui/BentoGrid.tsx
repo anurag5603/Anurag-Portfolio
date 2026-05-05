@@ -8,7 +8,7 @@ import { BackgroundGradientAnimation } from "./GradientBg";
 import animationData from "@/data/confetti.json";
 import MagicButton from "../MagicButton";
 
-const Lottie = dynamic(() => import("react-lottie"), { ssr: false });
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 const GridGlobe = dynamic(() => import("./GridGlobe"), { ssr: false });
 
 export const BentoGrid = ({
@@ -53,15 +53,6 @@ export const BentoGridItem = ({
   const rightLists = ["VueJS", "NuxtJS", "GraphQL"];
 
   const [copied, setCopied] = useState(false);
-
-  const defaultOptions = {
-    loop: copied,
-    autoplay: copied,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
 
   const handleCopy = () => {
     const text = "anuragpal5603@gmail.com";
@@ -163,7 +154,7 @@ export const BentoGridItem = ({
                   copied ? "block" : "block"
                 }`}
               >
-                <Lottie options={defaultOptions} height={200} width={400} />
+                <Lottie animationData={animationData} loop={copied} autoplay={copied} style={{ height: 200, width: 400 }} />
               </div>
               <MagicButton
                 title={copied ? "Email is Copied!" : "Copy my email address"}
